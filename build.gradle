@@ -38,6 +38,10 @@ dependencies {
 	implementation 'io.springfox:springfox-swagger2:2.9.2'
 	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+	// query DSL
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
 }
 
 tasks.named('test') {
