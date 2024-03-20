@@ -1,4 +1,4 @@
-package com.example.controller;//package com.example.demo.controller;
+package com.example.messagerestserver.controller;//package com.example.demo.controller;
 //
 //import com.example.demo.service.RabbitMqService;
 //import lombok.RequiredArgsConstructor;

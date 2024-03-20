@@ -1,6 +1,6 @@
-package com.example.repository;
+package com.example.messagerestserver.repository;
 
-import com.example.domain.AddressDetail;
+import com.example.messagerestserver.domain.AddressDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

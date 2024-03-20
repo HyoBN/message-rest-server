@@ -1,4 +1,4 @@
-package com.example.config;//package com.example.demo.config;
+package com.example.messagerestserver.config;//package com.example.demo.config;
 //
 //import org.springframework.amqp.core.*;
 //import org.springframework.amqp.rabbit.annotation.EnableRabbit;

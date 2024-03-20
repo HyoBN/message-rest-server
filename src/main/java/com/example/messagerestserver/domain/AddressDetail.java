@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.example.messagerestserver.domain;
 
 
 import jakarta.persistence.Entity;

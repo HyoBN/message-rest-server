@@ -1,4 +1,4 @@
-package com.example.service;//package com.example.demo.service;
+package com.example.messagerestserver.service;//package com.example.demo.service;
 //
 //import lombok.RequiredArgsConstructor;
 //import lombok.extern.slf4j.Slf4j;
