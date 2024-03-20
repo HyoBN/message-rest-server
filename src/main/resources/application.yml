@@ -1,0 +1,47 @@
+
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 18
+      min-spare: 15
+    max-connections: 8192
+    accept-count: 100
+    connection-timeout: 20000
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${db.username}
+    password: ${db.password}
+    url: ${db.url}
+  rabbitmq:
+    host: 192.168.1.104
+    port: 5672
+    username: guest
+    password: guest
+
+
+springdoc:
+  swagger-ui:
+    tags-sorter: alpha            # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+    operations-sorter: alpha      # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+    syntaxHighlight:
+      activated: false
+
+
+rabbitmq:
+  api:  # rabbit MQ API 호출을 위해 작성
+    port: 5672
+    queue: /api/queues
+
+    queue-detail: /api/queues/
+  queue:  # queue 연동을 위해 작성
+    queue1:
+      name: USM01
+      exchange: eso_topic
+
+
+    routing:
+      key:  # exchange
+        queue1: USM01.*
