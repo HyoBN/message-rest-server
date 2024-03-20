@@ -35,10 +35,10 @@ public class EsoController {
 
     @Operation(summary = "Address Detail 테이블 조건부 조회 API 입니다.", description = "Address Detail 테이블 조건부 조회 API 입니다.")
     @GetMapping("/address-detail")
-    public ResponseEntity<List<AddressDetail>> getAddressDetail(@RequestParam Map<String, String> params) {
-        addressDetailService.findAddressDetail(params);
-        List<AddressDetail> allAddressDetail = addressDetailService.findAll();
+    public ResponseEntity<List<AddressDetail>> getAddressDetail(@RequestParam Map<String, String> params) throws NoSuchFieldException{
 
-        return ResponseEntity.ok().body(allAddressDetail);
+        List<AddressDetail> customAddressDetails = addressDetailService.findAddressDetail(params);
+
+        return ResponseEntity.ok().body(customAddressDetails);
     }
 }

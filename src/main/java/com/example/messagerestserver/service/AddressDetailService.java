@@ -22,16 +22,20 @@ public class AddressDetailService {
         return addressDetailRepository.findAll();
     }
 
-    public List<AddressDetail> findAddressDetail(Map<String, String> paramMap) {
-        List<Field> addressDetailFields = List.of(AddressDetail.class.getDeclaredFields());
-        List<String> addressDetailFieldsToString = new ArrayList<>();
-        addressDetailFields.stream()
-                .map(field ->
-                {
-                    return addressDetailFieldsToString.add(field.getName());
-                }).collect(Collectors.toList());
+//    public List<AddressDetail> findAddressDetail(Map<String, String> paramMap) {
+//        List<Field> addressDetailFields = List.of(AddressDetail.class.getDeclaredFields());
+//        List<String> addressDetailFieldsToString = new ArrayList<>();
+//        addressDetailFields.stream()
+//                .map(field ->
+//                {
+//                    return addressDetailFieldsToString.add(field.getName());
+//                }).collect(Collectors.toList());
+//
+//        return null;
+//
+//    }
 
-        return null;
-
+    public List<AddressDetail> findAddressDetail(Map<String, String> paramMap) throws NoSuchFieldException{
+        return addressDetailRepository.qGetAddressDetail(paramMap);
     }
 }

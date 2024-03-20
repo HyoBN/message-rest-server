@@ -4,7 +4,9 @@ import com.example.messagerestserver.domain.AddressDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface AddressDetailRepository extends JpaRepository<AddressDetail, Long> {
+import java.util.List;
+import java.util.Map;
 
+@Repository
+public interface AddressDetailRepository extends JpaRepository<AddressDetail, Long>, AddressDetailRepositoryCustom {
 }
