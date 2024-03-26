@@ -10,11 +10,21 @@ server:
     connection-timeout: 20000
 
 spring:
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    username: ${db.username}
-    password: ${db.password}
-    url: ${db.url}
+#    driver-class-name: org.mariadb.jdbc.Driver
+    driver-class-name: com.tmax.tibero.jdbc.TbDriver
+
+
+#    username: ${db.username}
+#    password: ${db.password}
+#    url: ${db.url}
+
+    username: ${db.username.tibero}
+    password: ${db.password.tibero}
+    url: ${db.url.tibero}
   rabbitmq:
     host: 192.168.1.104
     port: 5672
