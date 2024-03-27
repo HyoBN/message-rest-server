@@ -24,7 +24,7 @@ public class RabbitMqController {
 
     @GetMapping("/queue/{queueName}/message-count")
     public ResponseEntity<ResponseDto.MqMessageCountResponseDto> getMessageCount(@PathVariable(name = "queueName") String queueName) {
-        int messageCount = rabbitMqAdminService.getMessageCount("hb");
+        int messageCount = rabbitMqAdminService.getMessageCount(queueName);
 
         return ResponseEntity.ok(ResponseDto.MqMessageCountResponseDto.builder()
                 .messageCount(messageCount)
