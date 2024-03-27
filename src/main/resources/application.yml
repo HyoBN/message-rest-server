@@ -26,7 +26,8 @@ spring:
 #    password: ${db.password.tibero}
 #    url: ${db.url.tibero}
   rabbitmq:
-    host: 192.168.1.104
+#    host: 192.168.1.104
+    host: localhost
     port: 5672
     username: guest
     password: guest
@@ -46,12 +47,20 @@ rabbitmq:
     queue: /api/queues
 
     queue-detail: /api/queues/
-  queue:  # queue 연동을 위해 작성
+  queue: # queue 연동을 위해 작성
     queue1:
-      name: USM01
-      exchange: eso_topic
-
+      name: hb
+      exchange: hb-exchange
 
     routing:
-      key:  # exchange
-        queue1: USM01.*
+      key: # exchange
+        queue1: hb
+#  queue:  # queue 연동을 위해 작성
+#    queue1:
+#      name: USM01
+#      exchange: eso_topic
+#
+#
+#    routing:
+#      key:  # exchange
+#        queue1: USM01.*
