@@ -1,14 +1,12 @@
 package com.example.messagerestserver.controller;//package com.example.demo.controller;
 
+import com.example.messagerestserver.dto.ResponseDto;
 import com.example.messagerestserver.service.RabbitMqAdminService;
 import com.example.messagerestserver.service.RabbitMqService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -24,8 +22,13 @@ public class RabbitMqController {
     }
 
 
-    @GetMapping("/queue/message-count")
-    public ResponseEntity<Integer> getMessageCount() {
-        return ResponseEntity.ok(rabbitMqAdminService.getMessageCount("hb"));
+    @GetMapping("/queue/{queueName}/message-count")
+    public ResponseEntity<ResponseDto.MqMessageCountResponseDto> getMessageCount(@PathVariable(name = "queueName") String queueName) {
+        int messageCount = rabbitMqAdminService.getMessageCount("hb");
+
+        return ResponseEntity.ok(ResponseDto.MqMessageCountResponseDto.builder()
+                .messageCount(messageCount)
+                .queueName(queueName)
+                .build());
     }
 }
