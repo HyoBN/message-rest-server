@@ -1,5 +1,6 @@
 package com.example.messagerestserver.controller;//package com.example.demo.controller;
 
+import com.example.messagerestserver.dto.RequestDto;
 import com.example.messagerestserver.dto.ResponseDto;
 import com.example.messagerestserver.service.RabbitMqAdminService;
 import com.example.messagerestserver.service.RabbitMqService;
@@ -7,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Connection;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -31,4 +34,19 @@ public class RabbitMqController {
                 .queueName(queueName)
                 .build());
     }
+
+    @PostMapping("/queue/produce")
+    public ResponseEntity<String> producer(@RequestBody RequestDto.MessageRequestDto requestDto) {
+        
+        // response 형식 필요
+
+
+        // Producer 생성
+
+
+
+//        return ResponseEntity.ok();
+        return null;
+    }
+
 }

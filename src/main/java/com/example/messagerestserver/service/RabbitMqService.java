@@ -3,6 +3,7 @@ package com.example.messagerestserver.service;//package com.example.demo.service
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -31,6 +32,11 @@ public class RabbitMqService {
     @RabbitListener(queues = "${rabbitmq.queue.queue1.name}")
     public void receiveMessage(String message) {
         log.info("Received Message : {}",message);
+    }
+
+
+    public void produceMessage(String message){
+
     }
 
 }
