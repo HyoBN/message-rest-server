@@ -16,7 +16,7 @@ public class RabbitMqFeignConfig {
     private String password;
 
     private String basicAuth(){
-        String auth = Base64.encodeBase64String((username + ":" + password).getBytes());
+        String auth = "Basic "+Base64.encodeBase64String((username + ":" + password).getBytes());
         return auth;
     }
     @Bean

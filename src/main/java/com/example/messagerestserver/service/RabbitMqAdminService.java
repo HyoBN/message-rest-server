@@ -3,13 +3,18 @@ package com.example.messagerestserver.service;
 import com.example.messagerestserver.converter.RabbitMqConverter;
 import com.example.messagerestserver.dto.ResponseDto;
 import com.example.messagerestserver.feign.RabbitMqFeignClient;
+import com.example.messagerestserver.feign.dto.FeignResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.stereotype.Service;
+import springfox.documentation.spring.web.json.Json;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -40,8 +45,32 @@ public class RabbitMqAdminService {
 
 
     public List<ResponseDto.MqMessageCountResponseDto> getQueueNameAndMessageCounts() {
-        List<Map<String, String>> queuesInfo = rabbitMqFeignClient.getQueuesInfo();
+            FeignResponseDto.RabbitMQResponseDtoList queuesInfo = rabbitMqFeignClient.getQueuesInfo();
 
-        return RabbitMqConverter.getQueueAndCountList(queuesInfo);
+        log.info("size: " + queuesInfo.getInfoList().size());
+
+        List<ResponseDto.MqMessageCountResponseDto> mqMessageCountResponseDtoList = new ArrayList<>();
+
+//        FeignResponseDto.RabbitMQResponseDto queuesInfo = rabbitMqFeignClient.getQueuesInfo();
+//        Json queuesInfo = rabbitMqFeignClient.getQueuesInfo();
+//
+//        log.error(queuesInfo);
+
+//        for (Map<String, String> queue : queuesInfo.getQueueInfo()) {
+//            String name = queue.get("name");
+//            String count = queue.get("messages");
+////            String name = (String) jsonObject.get("name");
+////            String count = (String) jsonObject.get("messages");
+//            mqMessageCountResponseDtoList.add(
+//                    ResponseDto.MqMessageCountResponseDto.builder()
+//                            .queueName(name)
+//                            .messageCount(count)
+//                            .build()
+//            );
+//        }
+
+//        return RabbitMqConverter.getQueueAndCountList(queuesInfo);
+        return mqMessageCountResponseDtoList;
     }
+
 }
