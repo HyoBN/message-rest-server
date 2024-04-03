@@ -11,7 +11,7 @@ public class ResponseDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class MqMessageCountResponseDto {
         private String queueName;
-        private int messageCount;
+        private String messageCount;
     }
 
     @Builder

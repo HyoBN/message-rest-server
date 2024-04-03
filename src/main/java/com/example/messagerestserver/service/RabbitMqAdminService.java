@@ -1,5 +1,8 @@
 package com.example.messagerestserver.service;
 
+import com.example.messagerestserver.converter.RabbitMqConverter;
+import com.example.messagerestserver.dto.ResponseDto;
+import com.example.messagerestserver.feign.RabbitMqFeignClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpAdmin;
@@ -7,6 +10,8 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 @Service
@@ -15,6 +20,7 @@ import java.util.Properties;
 public class RabbitMqAdminService {
 
     private final AmqpAdmin amqpAdmin;
+    private final RabbitMqFeignClient rabbitMqFeignClient;
 
 //    public RabbitMqAdminService(ConnectionFactory connectionFactory) {
 //        this.amqpAdmin = new RabbitAdmin(connectionFactory);
@@ -30,5 +36,12 @@ public class RabbitMqAdminService {
             return messageCount != null ? messageCount : 0;
         }
         return 0;
+    }
+
+
+    public List<ResponseDto.MqMessageCountResponseDto> getQueueNameAndMessageCounts() {
+        List<Map<String, String>> queuesInfo = rabbitMqFeignClient.getQueuesInfo();
+
+        return RabbitMqConverter.getQueueAndCountList(queuesInfo);
     }
 }

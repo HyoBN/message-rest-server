@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -27,12 +28,18 @@ public class RabbitMqController {
 
     @GetMapping("/queue/{queueName}/message-count")
     public ResponseEntity<ResponseDto.MqMessageCountResponseDto> getMessageCount(@PathVariable(name = "queueName") String queueName) {
-        int messageCount = rabbitMqAdminService.getMessageCount(queueName);
+        String messageCount = Integer.toString(rabbitMqAdminService.getMessageCount(queueName));
 
         return ResponseEntity.ok(ResponseDto.MqMessageCountResponseDto.builder()
                 .messageCount(messageCount)
                 .queueName(queueName)
                 .build());
+    }
+
+    @GetMapping("/queue/message-count")
+    public ResponseEntity<List<ResponseDto.MqMessageCountResponseDto>> getQueueAndMessageCount() {
+        List<ResponseDto.MqMessageCountResponseDto> queueNameAndMessageCounts = rabbitMqAdminService.getQueueNameAndMessageCounts();
+        return ResponseEntity.ok(queueNameAndMessageCounts);
     }
 
     @PostMapping("/queue/produce")
