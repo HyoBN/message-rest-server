@@ -18,7 +18,11 @@ public interface RabbitMqFeignClient {
 //    @GetMapping("/api/queues/%2F?page=1&page_size=50")
 //    FeignResponseDto.RabbitMQResponseDto getQueuesInfo();
 
-    @GetMapping("/api/queues/%2F?page=1&page_size=50")
-    FeignResponseDto.RabbitMQResponseDtoList getQueuesInfo();
+//    @GetMapping("/api/queues/%2F?page=1&page_size=50")
+//    FeignResponseDto.RabbitMQResponseDtoList getQueuesInfo();
+
+
+    @GetMapping("/api/queues/%2F")
+    List<FeignResponseDto.RabbitMQResponseDto> getQueuesInfo();
 
 }

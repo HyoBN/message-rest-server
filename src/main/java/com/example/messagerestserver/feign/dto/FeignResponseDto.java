@@ -12,11 +12,8 @@ public class FeignResponseDto {
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
     @NoArgsConstructor(access = AccessLevel. PROTECTED)
     public static class RabbitMQResponseDto{
-//        List<Map<String, String>> queueInfo;
-
-
         String name;
-        String messages;
+        int messages;
     }
 
 
@@ -25,9 +22,6 @@ public class FeignResponseDto {
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
     @NoArgsConstructor(access = AccessLevel. PROTECTED)
     public static class RabbitMQResponseDtoList{
-//        List<Map<String, String>> queueInfo;
-
-
         List<RabbitMQResponseDto> infoList;
     }
 }

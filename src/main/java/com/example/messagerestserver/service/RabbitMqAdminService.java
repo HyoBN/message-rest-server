@@ -44,33 +44,9 @@ public class RabbitMqAdminService {
     }
 
 
-    public List<ResponseDto.MqMessageCountResponseDto> getQueueNameAndMessageCounts() {
-            FeignResponseDto.RabbitMQResponseDtoList queuesInfo = rabbitMqFeignClient.getQueuesInfo();
-
-        log.info("size: " + queuesInfo.getInfoList().size());
-
-        List<ResponseDto.MqMessageCountResponseDto> mqMessageCountResponseDtoList = new ArrayList<>();
-
-//        FeignResponseDto.RabbitMQResponseDto queuesInfo = rabbitMqFeignClient.getQueuesInfo();
-//        Json queuesInfo = rabbitMqFeignClient.getQueuesInfo();
-//
-//        log.error(queuesInfo);
-
-//        for (Map<String, String> queue : queuesInfo.getQueueInfo()) {
-//            String name = queue.get("name");
-//            String count = queue.get("messages");
-////            String name = (String) jsonObject.get("name");
-////            String count = (String) jsonObject.get("messages");
-//            mqMessageCountResponseDtoList.add(
-//                    ResponseDto.MqMessageCountResponseDto.builder()
-//                            .queueName(name)
-//                            .messageCount(count)
-//                            .build()
-//            );
-//        }
-
-//        return RabbitMqConverter.getQueueAndCountList(queuesInfo);
-        return mqMessageCountResponseDtoList;
+    public List<FeignResponseDto.RabbitMQResponseDto> getQueueNameAndMessageCounts() {
+        List<FeignResponseDto.RabbitMQResponseDto> queuesInfo = rabbitMqFeignClient.getQueuesInfo();
+        return queuesInfo;
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.messagerestserver.controller;//package com.example.demo.cont
 
 import com.example.messagerestserver.dto.RequestDto;
 import com.example.messagerestserver.dto.ResponseDto;
+import com.example.messagerestserver.feign.dto.FeignResponseDto;
 import com.example.messagerestserver.service.RabbitMqAdminService;
 import com.example.messagerestserver.service.RabbitMqService;
 import lombok.RequiredArgsConstructor;
@@ -37,8 +38,8 @@ public class RabbitMqController {
     }
 
     @GetMapping("/queue/message-count")
-    public ResponseEntity<List<ResponseDto.MqMessageCountResponseDto>> getQueueAndMessageCount() {
-        List<ResponseDto.MqMessageCountResponseDto> queueNameAndMessageCounts = rabbitMqAdminService.getQueueNameAndMessageCounts();
+    public ResponseEntity<List<FeignResponseDto.RabbitMQResponseDto>> getQueueAndMessageCount() {
+        List<FeignResponseDto.RabbitMQResponseDto> queueNameAndMessageCounts = rabbitMqAdminService.getQueueNameAndMessageCounts();
         return ResponseEntity.ok(queueNameAndMessageCounts);
     }
 
